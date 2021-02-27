@@ -6,8 +6,11 @@ const Templates = () => {
 
   const [isLoading, setLoadingState] = useState(true);
   const [templates, setTemplates] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [error, setError] = useState(null);
 
+  // Fetch full list of templates from the server
   useEffect(() => {
     const uri = `/api/list-templates?auth_secret=${secret}`;
 
@@ -35,6 +38,18 @@ const Templates = () => {
     .finally(() => setLoadingState(false));
   }, [secret]);
 
+  // Filter templates based on search query
+  useEffect(() => {
+    const filteredTemplates = templates.filter(template => {
+      // TODO(shez): search the rendered body, not its raw html
+      const templateText = `${template.subject} ${template.body}`;
+      // TODO(shez): support non-exact matches by splitting the query
+      // by whitespace and checking that templateText includes each word
+      return templateText.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    setSearchResults(filteredTemplates);
+  }, [templates, searchQuery]);
+
   if (isLoading)
     return <div className="notice">Loading...</div>;
 
@@ -45,12 +60,32 @@ const Templates = () => {
     return <div className="notice">No templates found.</div>;
   }
 
-  return templates.map(t => (
-    <div key={t.id} className="template">
-      <div>{t.subject}</div>
-      <div>{t.body}</div>
-    </div>
-  ));
+  const handleChange = e => {
+    setSearchQuery(e.target.value);
+  };
+
+  // TODO(shez): factor out into separate function components
+  return (
+    <>
+      <input
+        id="template-search-input"
+        type="text"
+        placeholder="Search templates..."
+        value={searchQuery}
+        onChange={handleChange}
+      />
+
+      {
+        searchResults.map(t => (
+          <div key={t.id} className="template">
+            <div>{t.subject}</div>
+            {/* Template body contains raw, unescaped html that has been sanitized on the server */}
+            <div dangerouslySetInnerHTML={{ __html: t.body }} />
+          </div>
+        ))
+      }
+    </>
+  );
 
   // return <pre>{JSON.stringify(templates, undefined, 2)}</pre>;
 };
