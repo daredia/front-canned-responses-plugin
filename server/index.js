@@ -14,11 +14,12 @@ const to = promise => promise.then(data => {
 app.use(express.static(`${__dirname}/build/`));
 
 // This is the endpoint that Front will call on load of the plugin
-app.get('/api/search', async (req, res) => {
+app.get('/api/list-templates', async (req, res) => {
   // Deny requests that do not come from Front
   if (AUTH_SECRET && req.query.auth_secret !== AUTH_SECRET)
     return res.sendStatus(401);
 
+  // TODO(shez): add simple caching
   const [err, templates] = await to(frontDriver.getTeamMessageTemplates());
   if (err) {
     console.error(err);

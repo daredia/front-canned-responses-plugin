@@ -1,14 +1,17 @@
 # Front Plugin
 
 ## What is this?
-This project is a simple companion app for Front.
+This project is a simple companion app for Front that allows for sharing message templates across Front teams.
 
 ## Pre-requisite
+- Create a custom plugin [here](https://app.frontapp.com/settings/tools/plugins) and a Front API token [here](https://app.frontapp.com/settings/tools/api).
+
 
 ## Quick start
 - Clone this repository.
 - From within the repository, run `yarn install`.
 - Make a copy of the `.env.sample` file and rename it `.env`.
+- Find your Front API token [here](https://app.frontapp.com/settings/tools/api) and update the `FRONT_API_TOKEN` and `FRONT_MASTER_TEAM_ID` values in the `.env` file.
 - Run `yarn dev` to run the app in development mode.
 - Open a browser and visit [https://localhost:3000](https://localhost:3000) to accept the unsafe HTTPS connection.
 - Open Front in the same browser as the above step, and add https://localhost:3000 as a plugin in your Front account, in dev mode.

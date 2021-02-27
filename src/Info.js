@@ -9,7 +9,7 @@ const Info = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const uri = `/api/search?auth_secret=${secret}`;
+    const uri = `/api/list-templates?auth_secret=${secret}`;
     const initialMessage = {msg: 'Hello world from client.'};
 
     setLoadingState(true);
@@ -28,7 +28,7 @@ const Info = () => {
 
       return r.json();
     })
-    .then(response => setMessage(Object.assign(initialMessage, response.data)))
+    .then(response => setMessage(response.data))
     .catch((err) => {
       setMessage(initialMessage);
       setError(err.message);
