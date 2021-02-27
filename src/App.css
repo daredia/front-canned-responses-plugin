@@ -19,15 +19,6 @@ a:hover {
     sans-serif;
 }
 
-.notice {
-  text-align: center;
-  font-size: 12px;
-}
-
-.notice.error {
-  color: hsl(0, 50%, 50%);
-}
-
 .front-compose {
   border: 0;
   background: transparent;
@@ -40,4 +31,20 @@ a:hover {
 
 .front-compose:hover {
   color: #4e4e4e;
+}
+
+.notice {
+  text-align: center;
+  font-size: 12px;
+}
+
+.notice.error {
+  color: hsl(0, 50%, 50%);
+}
+
+.template {
+  /* Transparent/Black 8% */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  border-radius: 16px;
 }

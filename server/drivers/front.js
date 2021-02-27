@@ -21,9 +21,10 @@ const getTeamMessageTemplates = async () => {
     if(r.status === 404)
       return ({});
 
-    // TODO(shez): check for pagination and aggregate results accordingly
     return r.json();
   })
+  // TODO(shez): check for pagination and aggregate results accordingly
+  .then(response => response._results)
   .catch(err => { throw err; });
 
   return response;

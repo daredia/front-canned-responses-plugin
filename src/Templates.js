@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useStoreState } from './Store';
 
-const Info = () => {
+const Templates = () => {
   const { secret } = useStoreState();
 
   const [isLoading, setLoadingState] = useState(true);
-  const [message, setMessage] = useState({});
+  const [templates, setTemplates] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const uri = `/api/list-templates?auth_secret=${secret}`;
-    const initialMessage = {msg: 'Hello world from client.'};
 
     setLoadingState(true);
     setError(null);
@@ -28,9 +27,9 @@ const Info = () => {
 
       return r.json();
     })
-    .then(response => setMessage(response.data))
+    .then(response => setTemplates(response.data))
     .catch((err) => {
-      setMessage(initialMessage);
+      setTemplates([]);
       setError(err.message);
     })
     .finally(() => setLoadingState(false));
@@ -42,7 +41,18 @@ const Info = () => {
   if (error)
     return <div className="notice error">{error}</div>;
 
-  return <div className="notice">{JSON.stringify(message, undefined, 2)}</div>;
+  if (!templates.length) {
+    return <div className="notice">No templates found.</div>;
+  }
+
+  return templates.map(t => (
+    <div key={t.id} className="template">
+      <div>{t.subject}</div>
+      <div>{t.body}</div>
+    </div>
+  ));
+
+  // return <pre>{JSON.stringify(templates, undefined, 2)}</pre>;
 };
 
-export default Info;
+export default Templates;
