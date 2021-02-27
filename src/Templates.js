@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import TemplateSummary from './TemplateSummary';
 import { useStoreState } from './Store';
 
 const Templates = () => {
@@ -75,15 +76,7 @@ const Templates = () => {
         onChange={handleChange}
       />
 
-      {
-        searchResults.map(t => (
-          <div key={t.id} className="template">
-            <div>{t.name}</div>
-            {/* Template body contains raw, unescaped html that has been sanitized on the server */}
-            <div dangerouslySetInnerHTML={{ __html: t.body }} />
-          </div>
-        ))
-      }
+      {searchResults.map(t => <TemplateSummary key={t.id} name={t.name} body={t.body} />)}
     </>
   );
 
