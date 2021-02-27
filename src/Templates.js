@@ -78,7 +78,7 @@ const Templates = () => {
       {
         searchResults.map(t => (
           <div key={t.id} className="template">
-            <div>{t.subject}</div>
+            <div>{t.name}</div>
             {/* Template body contains raw, unescaped html that has been sanitized on the server */}
             <div dangerouslySetInnerHTML={{ __html: t.body }} />
           </div>
