@@ -6,6 +6,7 @@ const SearchBox = ({ searchQuery, onChange }) => {
       id="template-search-input"
       type="text"
       placeholder="Search templates..."
+      className="template-searchbox"
       value={searchQuery}
       onChange={onChange}
     />
