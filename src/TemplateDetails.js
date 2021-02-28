@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FrontCompose } from './FrontActions';
 import { useStoreState } from './Store';
 
 const TemplateDetails = ({ name, subject, body, onBackClick }) => {
-  const { frontContext } = useStoreState();
-  const { conversation } = frontContext;
-  const draftOptions = {
+  const initialDraftOptions = {
     subject,
     content: {
       body,
       type: 'html',
-    },
-    // replyOptions: {
-    //   type: 'replyAll',
-    //   originalMessageId: conversation?.id,
-    // }
-  }
+    }
+  };
+  const [draftOptions, setDraftOptions] = useState(initialDraftOptions);
+  const { frontContext } = useStoreState();
 
-  console.log({frontContext});
+  useEffect(() => {
+    if (!frontContext.listMessages) {
+      setDraftOptions(initialDraftOptions);
+      return undefined;
+    }
+
+    frontContext.listMessages().then(r => {
+      // TODO(shez): handle pagination of messages
+      const lastMessage = r.results[r.results.length - 1];
+      const replyOptions = {
+        type: 'replyAll',
+        originalMessageId: lastMessage.id,
+      }
+      setDraftOptions(Object.assign(initialDraftOptions, {replyOptions}));
+    });
+  }, [frontContext, initialDraftOptions]);
 
   if (!name || !body)
     return <></>;
@@ -34,8 +45,6 @@ const TemplateDetails = ({ name, subject, body, onBackClick }) => {
       <FrontCompose label="Insert draft" draftOptions={draftOptions} />
     </>
   );
-
-  // return <pre>{JSON.stringify(template, undefined, 2)}</pre>;
 };
 
 export default TemplateDetails;
