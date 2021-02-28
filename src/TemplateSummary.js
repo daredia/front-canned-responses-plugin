@@ -12,10 +12,10 @@ const TemplateSummary = ({ name, body, onClick }) => {
   }
 
   return (
-    <div className="template" onClick={handleClick}>
-      <div>{name}</div>
+    <div className="template-summary" onClick={handleClick}>
+      <div className="ts-title">{name}</div>
       {/* Template body contains raw, unescaped html that has been sanitized on the server */}
-      <div dangerouslySetInnerHTML={{ __html: body }} />
+      <div className="ts-body" dangerouslySetInnerHTML={{ __html: body }} />
     </div>
   );
 };

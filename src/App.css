@@ -42,9 +42,43 @@ a:hover {
   color: hsl(0, 50%, 50%);
 }
 
-.template {
+.template-summary {
   /* Transparent/Black 8% */
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
   border-radius: 16px;
+  font-family: SF Pro Text;
+  font-style: normal;
+  height: 92px;
+  margin-bottom: 14px;
+  padding: 14px 12px;
+}
+
+.template-summary .ts-title {
+  /* Gray 80 */
+  color: #3E3E40;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 7px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.template-summary .ts-body {
+  /* Gray 70 */
+  color: #77787A;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.0015em;
+
+  /* Show 2 lines of text + ellipses */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-height: 18px;     /* fallback */
+  height: 36px;          /* fallback */
 }
