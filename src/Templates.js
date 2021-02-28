@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SearchBox from './SearchBox';
 import TemplateDetails from './TemplateDetails';
 import TemplateSummary from './TemplateSummary';
 import { useStoreState } from './Store';
@@ -77,15 +78,7 @@ const Templates = () => {
 
   return (
     <>
-      {/* TODO(shez): factor out into separate function components*/}
-      <input
-        id="template-search-input"
-        type="text"
-        placeholder="Search templates..."
-        value={searchQuery}
-        onChange={handleChange}
-      />
-
+      <SearchBox searchQuery={searchQuery} onChange={handleChange} />
       {searchResults.map(t => <TemplateSummary key={t.id} name={t.name} body={t.body} onClick={handleClick(t)} />)}
     </>
   );
