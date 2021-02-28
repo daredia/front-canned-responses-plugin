@@ -54,6 +54,10 @@ a:hover {
   padding: 14px 12px;
 }
 
+.template-summary:hover {
+  cursor: pointer;
+}
+
 .template-summary .ts-title {
   /* Gray 80 */
   color: #3E3E40;
@@ -64,6 +68,11 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.template-summary .ts-title.hovered {
+  /* Blue 40 */
+  color: #367FEE;
 }
 
 .template-summary .ts-body {
