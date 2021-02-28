@@ -46,21 +46,28 @@ a:hover {
   background: #F3F4F6 url(images/search.svg) no-repeat scroll 8px 8px; /* Gray 20 */
   border: none;
   border-radius: 8px;
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
   height: 30px;
+  line-height: 17px;
+  letter-spacing: -0.154px;
   margin-bottom: 21px;
   margin-top: 11px;
   padding-left: 32px;
 }
 
+.template-searchbox:focus {
+  background: #FFFFFF; /* White */
+  color: #3E3E40; /* Gray 80 */
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 .template-searchbox::placeholder {
   color: #9B9C9E; /* Gray 60 */
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
   height: 17px;
-  line-height: 17px;
-  letter-spacing: -0.154px;
 }
 
 .template-summary {
