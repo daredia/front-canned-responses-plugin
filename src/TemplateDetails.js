@@ -1,7 +1,24 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { FrontCompose } from './FrontActions';
+import { useStoreState } from './Store';
 
-const TemplateDetails = ({ name, body, onBackClick }) => {
+const TemplateDetails = ({ name, subject, body, onBackClick }) => {
+  const { frontContext } = useStoreState();
+  const { conversation } = frontContext;
+  const draftOptions = {
+    subject,
+    content: {
+      body,
+      type: 'html',
+    },
+    // replyOptions: {
+    //   type: 'replyAll',
+    //   originalMessageId: conversation?.id,
+    // }
+  }
+
+  console.log({frontContext});
+
   if (!name || !body)
     return <></>;
 
@@ -10,9 +27,11 @@ const TemplateDetails = ({ name, body, onBackClick }) => {
       <div onClick={onBackClick}>&lt; Back</div>
       <div className="template">
         <div>{name}</div>
+        <div>{subject}</div>
         {/* Template body contains raw, unescaped html that has been sanitized on the server */}
         <div dangerouslySetInnerHTML={{ __html: body }} />
       </div>
+      <FrontCompose label="Insert draft" draftOptions={draftOptions} />
     </>
   );
 

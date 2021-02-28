@@ -68,12 +68,16 @@ const Templates = () => {
 
   if (selectedTemplate)
     return (
-      <TemplateDetails name={selectedTemplate.name} body={selectedTemplate.body} onBackClick={showAllTemplates} />
+      <TemplateDetails
+        name={selectedTemplate.name}
+        subject={selectedTemplate.subject}
+        body={selectedTemplate.body}
+        onBackClick={showAllTemplates} />
     );
 
-  // TODO(shez): factor out into separate function components
   return (
     <>
+      {/* TODO(shez): factor out into separate function components*/}
       <input
         id="template-search-input"
         type="text"
