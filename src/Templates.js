@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import TemplateDetails from './TemplateDetails';
 import TemplateSummary from './TemplateSummary';
 import { useStoreState } from './Store';
 
@@ -9,6 +10,7 @@ const Templates = () => {
   const [templates, setTemplates] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [error, setError] = useState(null);
 
   // Fetch full list of templates from the server
@@ -57,13 +59,14 @@ const Templates = () => {
   if (error)
     return <div className="notice error">{error}</div>;
 
-  if (!templates.length) {
+  if (!templates.length)
     return <div className="notice">No templates found.</div>;
-  }
 
-  const handleChange = e => {
-    setSearchQuery(e.target.value);
-  };
+  if (selectedTemplate)
+    return <TemplateDetails name={selectedTemplate.name} body={selectedTemplate.body} />;
+
+  const handleChange = e => setSearchQuery(e.target.value);
+  const handleClick = (template) => () => setSelectedTemplate(template);
 
   // TODO(shez): factor out into separate function components
   return (
@@ -76,7 +79,7 @@ const Templates = () => {
         onChange={handleChange}
       />
 
-      {searchResults.map(t => <TemplateSummary key={t.id} name={t.name} body={t.body} />)}
+      {searchResults.map(t => <TemplateSummary key={t.id} name={t.name} body={t.body} onClick={handleClick(t)} />)}
     </>
   );
 
