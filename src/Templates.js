@@ -53,6 +53,10 @@ const Templates = () => {
     setSearchResults(filteredTemplates);
   }, [templates, searchQuery]);
 
+  const handleChange = e => setSearchQuery(e.target.value);
+  const handleClick = (template) => () => setSelectedTemplate(template);
+  const showAllTemplates = () => setSelectedTemplate(null);
+
   if (isLoading)
     return <div className="notice">Loading...</div>;
 
@@ -63,10 +67,9 @@ const Templates = () => {
     return <div className="notice">No templates found.</div>;
 
   if (selectedTemplate)
-    return <TemplateDetails name={selectedTemplate.name} body={selectedTemplate.body} />;
-
-  const handleChange = e => setSearchQuery(e.target.value);
-  const handleClick = (template) => () => setSelectedTemplate(template);
+    return (
+      <TemplateDetails name={selectedTemplate.name} body={selectedTemplate.body} onBackClick={showAllTemplates} />
+    );
 
   // TODO(shez): factor out into separate function components
   return (
