@@ -4,7 +4,7 @@ const SearchBox = ({ searchQuery, onChange }) => {
   return (
     <input
       id="template-search-input"
-      type="text"
+      type="search"
       placeholder="Search templates..."
       className="template-searchbox"
       value={searchQuery}
