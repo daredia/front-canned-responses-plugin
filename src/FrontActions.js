@@ -19,6 +19,6 @@ export const FrontCompose = ({ label, draftOptions }) => {
   const handleClick = (draftOptions) => () => createDraft(draftOptions);
 
   return (
-    <button className="front-compose" onClick={handleClick(draftOptions)}>{label}</button>
+    <div className="front-compose" onClick={handleClick(draftOptions)}>{label}</div>
   );
 };
