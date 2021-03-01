@@ -6,6 +6,7 @@ const SearchBox = ({ searchQuery, onChange }) => {
       id="template-search-input"
       type="search"
       placeholder="Search templates..."
+      autocomplete="off"
       className="template-searchbox"
       value={searchQuery}
       onChange={onChange}
