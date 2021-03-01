@@ -19,6 +19,33 @@ a:hover {
     sans-serif;
 }
 
+.btn-back {
+  align-items: center;
+  color: #9B9C9E; /* Gray 60 */
+  cursor: pointer;
+  display: flex;
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  height: 24px;
+  line-height: 18px;
+  margin-top: 11px;
+  margin-bottom: 10px;
+
+  /* Make text not selectable */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.btn-back:before {
+  content: url(icons/back.svg);
+  padding-top: 4px;
+  margin-left: -12px;
+}
+
 .front-compose {
   border: 0;
   background: transparent;

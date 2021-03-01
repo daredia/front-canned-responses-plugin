@@ -35,8 +35,8 @@ const TemplateDetails = ({ name, subject, body, onBackClick }) => {
 
   return (
     <>
-      <div onClick={onBackClick}>&lt; Back</div>
-      <div className="template">
+      <div className="btn-back" onClick={onBackClick}>Back</div>
+      <div className="template-details">
         <div>{name}</div>
         <div>{subject}</div>
         {/* Template body contains raw, unescaped html that has been sanitized on the server */}
