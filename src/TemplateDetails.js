@@ -42,7 +42,9 @@ const TemplateDetails = ({ name, subject, body, onBackClick }) => {
         {/* Template body contains raw, unescaped html that has been sanitized on the server */}
         <div dangerouslySetInnerHTML={{ __html: body }} />
       </div>
-      <FrontCompose label="Insert draft" draftOptions={draftOptions} />
+      <div className="insert-draft-btn-container" >
+        <FrontCompose label="Insert draft" draftOptions={draftOptions} />
+      </div>
     </>
   );
 };

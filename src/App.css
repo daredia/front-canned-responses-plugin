@@ -68,6 +68,16 @@ a:hover {
   background: #2356B3; /* Blue 50 */
 }
 
+.insert-draft-btn-container {
+  align-items: center;
+  border-top: 1px solid #D4D6D9; /* Gray 40 */
+  bottom: 0px;
+  display: flex;
+  height: 58px;
+  position: absolute;
+  width: 90%;
+}
+
 .notice {
   text-align: center;
   font-size: 12px;
