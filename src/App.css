@@ -41,6 +41,10 @@ h4 {
   line-height: 18px;
   margin-top: 11px;
   margin-bottom: 10px;
+  overflow: hidden;
+  padding-right: 10px;
+  position: absolute;
+  top: 0;
 
   /* Make text not selectable */
   -webkit-user-select: none; /* Safari */
@@ -83,7 +87,7 @@ h4 {
   bottom: 0px;
   display: flex;
   height: 58px;
-  position: absolute;
+  position: fixed;
   width: 90%;
 }
 
@@ -94,6 +98,14 @@ h4 {
 
 .notice.error {
   color: hsl(0, 50%, 50%);
+}
+
+.template-details {
+  bottom: 58px;
+  margin-top: 10px;
+  overflow: auto;
+  position: absolute;
+  top: 34px;
 }
 
 .template-details h4 {
