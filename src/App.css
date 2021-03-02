@@ -7,6 +7,15 @@ a:hover {
   color: hsl(216deg, 84%, 42%, 1);
 }
 
+h4 {
+  color: #3E3E40; /* Gray 80 */
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+}
+
 .app {
   height: 100%;
   box-sizing: border-box;
@@ -85,6 +94,23 @@ a:hover {
 
 .notice.error {
   color: hsl(0, 50%, 50%);
+}
+
+.template-details h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.template-details p {
+  color: #77787A; /* Gray 70 */
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.0015em;
+  line-height: 18px;
+  margin-top: 0;
+  margin-bottom: 16px;
 }
 
 .template-searchbox {

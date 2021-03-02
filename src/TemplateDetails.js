@@ -37,10 +37,13 @@ const TemplateDetails = ({ name, subject, body, onBackClick }) => {
     <>
       <div className="btn-back" onClick={onBackClick}>Back</div>
       <div className="template-details">
-        <div>{name}</div>
-        <div>{subject}</div>
+        <h4>Title</h4>
+        <p>{name}</p>
+        <h4>Subject</h4>
+        <p>{subject || 'None'}</p>
+        <h4>Body</h4>
         {/* Template body contains raw, unescaped html that has been sanitized on the server */}
-        <div dangerouslySetInnerHTML={{ __html: body }} />
+        <p dangerouslySetInnerHTML={{ __html: body }} />
       </div>
       <div className="insert-draft-btn-container" >
         <FrontCompose label="Insert draft" draftOptions={draftOptions} />
