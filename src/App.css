@@ -125,6 +125,15 @@ h4 {
   margin-bottom: 16px;
 }
 
+.template-list-container {
+  bottom: 0;
+  margin-top: 10px;
+  overflow: auto;
+  padding-right: 14px;
+  position: absolute;
+  top: 55px;
+}
+
 .template-searchbox {
   background: #F3F4F6 url(icons/search.svg) no-repeat scroll 8px 8px; /* Gray 20 */
   border: none;
@@ -139,6 +148,7 @@ h4 {
   margin-bottom: 21px;
   margin-top: 11px;
   padding-left: 32px;
+  width: 100%
 }
 
 .template-searchbox:focus {
@@ -160,6 +170,16 @@ h4 {
   background: url(icons/crossCircle.svg) no-repeat scroll;
   cursor: pointer;
   margin-left: 8px;
+}
+
+.template-searchbox-container {
+  left: 0;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 14px;
+  position: absolute;
+  right: 0;
+  top: 6px;
 }
 
 .template-summary {

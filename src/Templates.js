@@ -78,8 +78,12 @@ const Templates = () => {
 
   return (
     <>
-      <SearchBox searchQuery={searchQuery} onChange={handleChange} />
-      {searchResults.map(t => <TemplateSummary key={t.id} name={t.name} body={t.body} onClick={handleClick(t)} />)}
+      <div className="template-searchbox-container">
+        <SearchBox searchQuery={searchQuery} onChange={handleChange} />
+       </div>
+      <div className="template-list-container">
+        {searchResults.map(t => <TemplateSummary key={t.id} name={t.name} body={t.body} onClick={handleClick(t)} />)}
+      </div>
     </>
   );
 
