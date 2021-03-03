@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import useInterval from 'use-interval';
+
 import SearchBox from './SearchBox';
 import TemplateDetails from './TemplateDetails';
 import TemplateSummary from './TemplateSummary';
@@ -14,9 +16,10 @@ const Templates = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [error, setError] = useState(null);
 
-  // Fetch full list of templates from the server
-  useEffect(() => {
+  // Fetch full list of templates from the server periodically
+  useInterval(() => {
     const uri = `/api/list-templates?auth_secret=${secret}`;
+    const refetchIntervalMs = 30 * 60 * 1000; // 30 minutes
 
     setLoadingState(true);
     setError(null);
@@ -40,7 +43,7 @@ const Templates = () => {
       setError(err.message);
     })
     .finally(() => setLoadingState(false));
-  }, [secret]);
+  }, refetchIntervalMs, true /* immediate */);
 
   // Filter templates based on search query
   useEffect(() => {
