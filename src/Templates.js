@@ -76,16 +76,12 @@ const Templates = () => {
 
   return (
     <>
-      <div className="template-searchbox-container">
-        <SearchBox searchQuery={searchQuery} onChange={handleChange} />
-       </div>
+      <SearchBox searchQuery={searchQuery} onChange={handleChange} />
       <div className="template-list-container">
         {searchResults.map(t => <TemplateSummary key={t.id} name={t.name} body={t.body} onClick={handleClick(t)} />)}
       </div>
     </>
   );
-
-  // return <pre>{JSON.stringify(templates, undefined, 2)}</pre>;
 };
 
 export default Templates;
