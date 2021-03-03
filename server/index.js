@@ -33,6 +33,7 @@ app.get('/api/list-templates', async (req, res) => {
   if (!templates)
     return res.sendStatus(404);
 
+  templates.sort((a, b) => a.name.localeCompare(b.name));
   res.send({data: templates});
 });
 
