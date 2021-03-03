@@ -45,9 +45,9 @@ const Templates = () => {
   // Filter templates based on search query
   useEffect(() => {
     const filteredTemplates = templates.filter(t => {
-      // TODO(shez): support non-exact matches by splitting the query
-      // by whitespace and checking that templateText includes each word
-      return t.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const queryTerms = searchQuery.toLowerCase().split(' ');
+      // Support non-exact matches
+      return queryTerms.every(qt => t.name.toLowerCase().includes(qt));
     });
     setSearchResults(filteredTemplates);
   }, [templates, searchQuery]);
