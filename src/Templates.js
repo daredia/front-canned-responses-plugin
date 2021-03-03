@@ -44,12 +44,10 @@ const Templates = () => {
 
   // Filter templates based on search query
   useEffect(() => {
-    const filteredTemplates = templates.filter(template => {
-      // TODO(shez): search the rendered body, not its raw html
-      const templateText = `${template.subject} ${template.body}`;
+    const filteredTemplates = templates.filter(t => {
       // TODO(shez): support non-exact matches by splitting the query
       // by whitespace and checking that templateText includes each word
-      return templateText.toLowerCase().includes(searchQuery.toLowerCase());
+      return t.name.toLowerCase().includes(searchQuery.toLowerCase());
     });
     setSearchResults(filteredTemplates);
   }, [templates, searchQuery]);
