@@ -15,11 +15,11 @@ const Templates = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [error, setError] = useState(null);
+  const refetchIntervalMs = 30 * 60 * 1000; // 30 minutes
 
   // Fetch full list of templates from the server periodically
   useInterval(() => {
     const uri = `/api/list-templates?auth_secret=${secret}`;
-    const refetchIntervalMs = 30 * 60 * 1000; // 30 minutes
 
     setLoadingState(true);
     setError(null);

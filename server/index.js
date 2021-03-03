@@ -1,6 +1,8 @@
 const express = require('express');
 const mcache = require('memory-cache');
+
 const frontDriver = require(`./drivers/front`);
+
 const app = express();
 const port = process.env.PORT || 9070;
 
@@ -29,7 +31,7 @@ const cache = durationInSeconds => (req, res, next) => {
   }
 
   next();
-}
+};
 
 // Static routes
 app.use(express.static(`${__dirname}/build/`));

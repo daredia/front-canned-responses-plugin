@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useStoreState } from './Store';
 
 export const FrontLink = ({ label, href }) => {
