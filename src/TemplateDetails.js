@@ -22,16 +22,27 @@ const TemplateDetails = ({ name, subject, body, onBackClick }) => {
       return undefined;
     }
 
-    frontContext.listMessages().then(r => {
-      // TODO(shez): handle pagination of messages
-      const lastMessage = r.results[r.results.length - 1];
+    async function listAllMessagesAndUpdateDraftOptions() {
+      const response = await frontContext.listMessages();
+
+      let nextPageToken = response.token;
+      const messages = response.results;
+
+      while (nextPageToken) {
+        const {results, token} = await frontContext.listMessages(nextPageToken);
+
+        nextPageToken = token;
+        messages.push(...results);
+      }
+
+      const lastMessage = messages[messages.length - 1];
       const replyOptions = {
         type: 'replyAll',
         originalMessageId: lastMessage?.id,
       }
       setDraftOptions(Object.assign(initialDraftOptions, {replyOptions}));
-    })
-    .catch(err => console.error(err));
+    }
+    listAllMessagesAndUpdateDraftOptions();
   }, [frontContext, initialDraftOptions]);
 
   if (!name || !body)
