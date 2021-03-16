@@ -5,7 +5,7 @@ import { useStoreState } from './Store';
 
 const TemplateDetails = ({ name, subject, body, onBackClick }) => {
   const initialDraftOptions = {
-    subject,
+    subject: subject || '',
     content: {
       body,
       type: 'html',
@@ -14,8 +14,10 @@ const TemplateDetails = ({ name, subject, body, onBackClick }) => {
   const [draftOptions, setDraftOptions] = useState(initialDraftOptions);
   const { frontContext } = useStoreState();
 
+  // Fetch messages for the currently selected conversation and use them
+  // to populate draft options for the 'Insert Draft' compose button
   useEffect(() => {
-    if (!frontContext.listMessages) {
+    if (!frontContext?.listMessages || !frontContext?.conversation) {
       setDraftOptions(initialDraftOptions);
       return undefined;
     }
@@ -25,10 +27,11 @@ const TemplateDetails = ({ name, subject, body, onBackClick }) => {
       const lastMessage = r.results[r.results.length - 1];
       const replyOptions = {
         type: 'replyAll',
-        originalMessageId: lastMessage.id,
+        originalMessageId: lastMessage?.id,
       }
       setDraftOptions(Object.assign(initialDraftOptions, {replyOptions}));
-    });
+    })
+    .catch(err => console.error(err));
   }, [frontContext, initialDraftOptions]);
 
   if (!name || !body)
