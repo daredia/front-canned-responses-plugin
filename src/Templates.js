@@ -57,6 +57,7 @@ const Templates = () => {
 
   const handleChange = e => setSearchQuery(e.target.value);
   const handleClick = (template) => () => setSelectedTemplate(template);
+  const handleReset = () => setSearchQuery('');
   const showAllTemplates = () => setSelectedTemplate(null);
 
   if (isLoading)
@@ -79,7 +80,7 @@ const Templates = () => {
 
   return (
     <>
-      <SearchBox searchQuery={searchQuery} onChange={handleChange} />
+      <SearchBox searchQuery={searchQuery} onChange={handleChange} onReset={handleReset} />
       <div className="template-list-container">
         {searchResults.map(t => <TemplateSummary key={t.id} name={t.name} body={t.body} onClick={handleClick(t)} />)}
       </div>

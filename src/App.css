@@ -158,7 +158,6 @@ h4 {
   height: 17px;
 }
 
-/* TODO(shez): Add support for Firefox */
 .template-searchbox::-webkit-search-cancel-button {
   -webkit-appearance: none;
   height: 16px;
@@ -166,6 +165,50 @@ h4 {
   background: url(icons/crossCircle.svg) no-repeat scroll;
   cursor: pointer;
   margin-left: 8px;
+}
+
+.template-search-close-btn {
+  display: none;
+}
+
+@-moz-document url-prefix() {
+  .template-searchbox:required {
+      box-shadow: none;
+  }
+
+  .template-searchbox:not(:valid) ~ .template-search-close-btn {
+    display: none;
+  }
+
+  .template-search-close-btn {
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-block;
+    outline: 0;
+    vertical-align: middle;
+  }
+
+  .template-search-close-btn:after {
+    background-color: #BBBDBF;
+    border-radius: 50%;
+    bottom: 0;
+    color: white;
+    content: "X";
+    cursor: pointer;
+    display: block;
+    font-weight: normal;
+    font-size: 12px;
+    height: 15px;
+    margin: auto;
+    padding: 2px;
+    position: absolute;
+    right: 25px;
+    text-align: center;
+    top: -27px;
+    width: 15px;
+    z-index:1;
+  }
 }
 
 .template-searchbox-container {

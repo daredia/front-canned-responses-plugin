@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBox = ({ searchQuery, onChange }) => {
+const SearchBox = ({ searchQuery, onChange, onReset }) => {
   return (
     <div className="template-searchbox-container">
       <input
@@ -11,7 +11,9 @@ const SearchBox = ({ searchQuery, onChange }) => {
         className="template-searchbox"
         value={searchQuery}
         onChange={onChange}
+        required
       />
+      <button class="template-search-close-btn" type="reset" onClick={onReset}></button>
     </div>
   );
 };
