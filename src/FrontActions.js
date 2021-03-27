@@ -15,9 +15,11 @@ export const FrontLink = ({ label, href }) => {
 
 export const FrontCompose = ({ label, draftOptions }) => {
   const { frontContext } = useStoreState();
-  const { createDraft } = frontContext;
+  const { conversation, createDraft, updateDraft } = frontContext;
 
-  const handleClick = (draftOptions) => () => createDraft(draftOptions);
+  const handleClick = (draftOptions) => () => conversation?.draftId ?
+    updateDraft(conversation.draftId, Object.assign(draftOptions, { updateMode: 'insert' })) :
+    createDraft(draftOptions);
 
   return (
     <div className="front-compose" onClick={handleClick(draftOptions)}>{label}</div>
