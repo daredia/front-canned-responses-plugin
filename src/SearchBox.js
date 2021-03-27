@@ -13,7 +13,7 @@ const SearchBox = ({ searchQuery, onChange, onReset }) => {
         onChange={onChange}
         required
       />
-      <button class="template-search-close-btn" type="reset" onClick={onReset}></button>
+      <button className="template-search-close-btn" type="reset" onClick={onReset}></button>
     </div>
   );
 };
