@@ -3,6 +3,10 @@
 ## What is this?
 This project is a simple companion app for Front that allows for sharing message templates across Front teams.
 
+![Image of the plugin](/screenshot-templates.png)
+![Image of the plugin](/screenshot-search.png)
+![Image of the plugin](/screenshot-template-details.png)
+
 ## Pre-requisite
 - Create a custom plugin [here](https://app.frontapp.com/settings/tools/plugins) and a Front API token [here](https://app.frontapp.com/settings/tools/api).
 
@@ -26,8 +30,6 @@ The project is split into two pieces: a client serving the plugin files, and a m
 - `yarn start` will run the client code only.
 - `yarn server` will run the server code only.
 - `yarn dev` is a combination of both.
-
-## How to use this project
 
 ## Building and deploying
 
