@@ -3,8 +3,7 @@
 ## What is this?
 This project is a simple companion app for Front that allows for sharing message templates across Front teams.
 
-![Image of the plugin](/screenshot-templates.png)
-![Image of the plugin](/screenshot-search.png)
+![Image of the plugin](/screenshot-templates.png) ![Image of the plugin](/screenshot-search.png)
 ![Image of the plugin](/screenshot-template-details.png)
 
 ## Pre-requisite
