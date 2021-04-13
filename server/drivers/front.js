@@ -28,14 +28,14 @@ const getTeamMessageTemplates = async () => {
   const response = await fetchAndValidate(`${apiHost}${endpoint}`);
   const {_results, _pagination, _error} = response;
 
-  let nextPageUrl = _pagination?.next;
+  let nextPageUrl = _pagination && _pagination.next;
   const results = _results;
 
   while (nextPageUrl) {
     const response = await fetchAndValidate(nextPageUrl);
     const {_results, _pagination, _error} = response;
 
-    nextPageUrl = _pagination?.next;
+    nextPageUrl = _pagination && _pagination.next;
     results.push(..._results);
   }
 
