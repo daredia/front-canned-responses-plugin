@@ -1,4 +1,4 @@
-# Front Plugin
+# Front Canned Responses Plugin
 
 ## What is this?
 This project is a simple companion app for Front that allows for sharing message templates across Front teams.
